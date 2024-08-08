@@ -43,19 +43,24 @@ This Laravel project provides an API for converting currency from a base currenc
 
 1. Test the application:
 
-````bash
-php artisan test
+    ```bash
+    php artisan test
+
+    ```
 
 2. Run the application:
 
-```bash
-php artisan serve
+    ```bash
+    php artisan serve
 
+    ```
 
 3. The currency conversion endpoint is available at:
 
-```bash
-GET /api/convert
+    ```bash
+    GET /api/convert
+    ```
 
+```
 
-````
+```
