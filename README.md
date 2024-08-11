@@ -55,10 +55,10 @@ This Laravel project provides an API for converting currency from a base currenc
 
     ```
 
-3. The currency conversion endpoint is available at:
+3. Documentation (Swagger)
 
     ```bash
-    GET /api/convert
+    https://hostname/api/documentation
     ```
 
 ```

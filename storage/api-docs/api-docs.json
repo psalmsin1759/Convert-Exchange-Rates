@@ -1,0 +1,145 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "ZilliPay Currency Conversion Service",
+        "description": "Currency exchanges by providing real-time conversion rates. It integrates two currency providers, CurrencyApi and CurrencyExchangeApi",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/currencyconvert": {
+            "post": {
+                "tags": [
+                    "Currency"
+                ],
+                "summary": "Convert currency from one type to another",
+                "operationId": "b3614cd0135910b18622b475f08edd1d",
+                "requestBody": {
+                    "content": {
+                        "application/x-www-form-urlencoded": {
+                            "schema": {
+                                "properties": {
+                                    "from": {
+                                        "description": "Base currency code",
+                                        "type": "string",
+                                        "example": "USD"
+                                    },
+                                    "to": {
+                                        "description": "Target currency code",
+                                        "type": "string",
+                                        "example": "EUR"
+                                    },
+                                    "amount": {
+                                        "description": "Amount to be converted",
+                                        "type": "number",
+                                        "example": 100
+                                    }
+                                },
+                                "type": "object",
+                                "example": {
+                                    "from": "USD",
+                                    "to": "EUR",
+                                    "amount": 100
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful currency conversion",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": true
+                                        },
+                                        "result": {
+                                            "type": "number",
+                                            "example": 84.75
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "examples": {
+                                    "result": {
+                                        "summary": "Conversion result.",
+                                        "value": {
+                                            "success": true,
+                                            "result": 84.75
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "422": {
+                        "description": "Validation error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "The from field is required."
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "examples": {
+                                    "validation_error": {
+                                        "summary": "Validation error.",
+                                        "value": {
+                                            "success": false,
+                                            "message": "The from field is required."
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Internal server error",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "success": {
+                                            "type": "boolean",
+                                            "example": false
+                                        },
+                                        "message": {
+                                            "type": "string",
+                                            "example": "Currency conversion API request failed."
+                                        }
+                                    },
+                                    "type": "object"
+                                },
+                                "examples": {
+                                    "server_error": {
+                                        "summary": "Internal server error.",
+                                        "value": {
+                                            "success": false,
+                                            "message": "Currency conversion API request failed."
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "Currency",
+            "description": "Currency"
+        }
+    ]
+}

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Services;
-use App\Repositories\CurrencyConverterRepositoryInterface;
+use App\Repositories\Interfaces\CurrencyConverterRepositoryInterface;
 
 class CurrencyConverterService {
 
