@@ -1,6 +1,6 @@
 # Laravel Currency Converter
 
-This Laravel project provides an API for converting currency from a base currency to another currency using real-time exchange rates.
+provides an API for converting currency from a base currency to another currency using real-time exchange rates.
 
 ## Features
 
@@ -11,9 +11,9 @@ This Laravel project provides an API for converting currency from a base currenc
 
 ## Requirements
 
--   PHP >= 7.3
+-   PHP >= 8.3
 -   Composer
--   Laravel >= 8.x
+-   Laravel >= 10.x
 -   An API key from a currency exchange rate providers [Exchange Rates API](https://exchangeratesapi.io/) and [Open Exchange Rates](https://openexchangerates.org/)
 
 ## Installation
