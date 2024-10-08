@@ -6,44 +6,46 @@
         "version": "1.0.0"
     },
     "paths": {
-        "/api/currencyconvert": {
-            "post": {
+        "/api/currencyconvert/{to}/{from}/{amount}": {
+            "get": {
                 "tags": [
-                    "Currency"
+                    "Currency Conversion"
                 ],
                 "summary": "Convert currency from one type to another",
-                "operationId": "b3614cd0135910b18622b475f08edd1d",
-                "requestBody": {
-                    "content": {
-                        "application/x-www-form-urlencoded": {
-                            "schema": {
-                                "properties": {
-                                    "from": {
-                                        "description": "Base currency code",
-                                        "type": "string",
-                                        "example": "USD"
-                                    },
-                                    "to": {
-                                        "description": "Target currency code",
-                                        "type": "string",
-                                        "example": "EUR"
-                                    },
-                                    "amount": {
-                                        "description": "Amount to be converted",
-                                        "type": "number",
-                                        "example": 100
-                                    }
-                                },
-                                "type": "object",
-                                "example": {
-                                    "from": "USD",
-                                    "to": "EUR",
-                                    "amount": 100
-                                }
-                            }
+                "operationId": "c4f178e335b75160dc6289a6a6ac65e9",
+                "parameters": [
+                    {
+                        "name": "to",
+                        "in": "path",
+                        "description": "Currency code to convert to (e.g. USD)",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "USD"
+                        }
+                    },
+                    {
+                        "name": "from",
+                        "in": "path",
+                        "description": "Currency code to convert from (e.g. EUR)",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "example": "EUR"
+                        }
+                    },
+                    {
+                        "name": "amount",
+                        "in": "path",
+                        "description": "Amount to be converted",
+                        "required": true,
+                        "schema": {
+                            "type": "number",
+                            "format": "float",
+                            "example": 100
                         }
                     }
-                },
+                ],
                 "responses": {
                     "200": {
                         "description": "Successful currency conversion",
@@ -74,8 +76,8 @@
                             }
                         }
                     },
-                    "422": {
-                        "description": "Validation error",
+                    "400": {
+                        "description": "Bad request or validation error",
                         "content": {
                             "application/json": {
                                 "schema": {
@@ -86,48 +88,10 @@
                                         },
                                         "message": {
                                             "type": "string",
-                                            "example": "The from field is required."
+                                            "example": "Invalid currency code"
                                         }
                                     },
                                     "type": "object"
-                                },
-                                "examples": {
-                                    "validation_error": {
-                                        "summary": "Validation error.",
-                                        "value": {
-                                            "success": false,
-                                            "message": "The from field is required."
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "500": {
-                        "description": "Internal server error",
-                        "content": {
-                            "application/json": {
-                                "schema": {
-                                    "properties": {
-                                        "success": {
-                                            "type": "boolean",
-                                            "example": false
-                                        },
-                                        "message": {
-                                            "type": "string",
-                                            "example": "Currency conversion API request failed."
-                                        }
-                                    },
-                                    "type": "object"
-                                },
-                                "examples": {
-                                    "server_error": {
-                                        "summary": "Internal server error.",
-                                        "value": {
-                                            "success": false,
-                                            "message": "Currency conversion API request failed."
-                                        }
-                                    }
                                 }
                             }
                         }
@@ -138,8 +102,8 @@
     },
     "tags": [
         {
-            "name": "Currency",
-            "description": "Currency"
+            "name": "Currency Conversion",
+            "description": "Currency Conversion"
         }
     ]
 }

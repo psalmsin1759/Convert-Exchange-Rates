@@ -6,5 +6,5 @@ use App\Http\Controllers\CurrencyConvertController;
 
 
 
-Route::post("currencyconvert", [CurrencyConvertController::class, "convert"]);
+Route::get("currencyconvert/{to}/{from}/{amount}", [CurrencyConvertController::class, "convert"]);
 
